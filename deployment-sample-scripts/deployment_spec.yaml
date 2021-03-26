@@ -5,15 +5,15 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: test-instance
+    app: customerapi
     migrate-for-anthos-optimization: "true"
     migrate-for-anthos-version: v1.6.0
-  name: test-instance
+  name: customerapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-instance
+      app: customerapi
       migrate-for-anthos-optimization: "true"
       migrate-for-anthos-version: v1.6.0
   strategy: {}
@@ -21,13 +21,13 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: test-instance
+        app: customerapi
         migrate-for-anthos-optimization: "true"
         migrate-for-anthos-version: v1.6.0
     spec:
       containers:
-      - image: gcr.io/cloud-and-beyond-chapter-7/test-instance:2-3-2021--17-31-32
-        name: test-instance
+      - image: gcr.io/case-one/customerapi:2-3-2021--17-31-32
+        name: customerapi
         env:
         - name: "PORT"
           value: "4567"
@@ -56,10 +56,10 @@ apiVersion: v1
 kind: Service
 metadata:
   creationTimestamp: null
-  name: test-instance
+  name: customerapi
 spec:
   selector:
-    app: test-instance
+    app: customerapi
   type: LoadBalancer
   ports:
    - protocol: TCP 
